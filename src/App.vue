@@ -4,11 +4,11 @@ import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import axios from 'axios';
 
-export {
+export default {
   components: {
     AppHeader,
     AppMain
-  }
+  },
 
   methods: {
     getCard() {
@@ -26,7 +26,7 @@ export {
         // always executed
       });
     }
-  }
+  },
 
   created() {
     
