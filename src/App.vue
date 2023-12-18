@@ -1,4 +1,4 @@
-<script setup>
+<script>
 
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
@@ -7,16 +7,18 @@ import axios from 'axios';
 export default {
   components: {
     AppHeader,
-    AppMain
+    AppMain,
+    
   },
 
   methods: {
     getCard() {
       axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
       
-      .then(function (response) {
+      .then((response) => {
         // handle success
-        console.log(response);
+        console.log(response.data.data);
+        this.cards = response.data.data;
       })
       .catch(function (error) {
         // handle error
@@ -28,7 +30,14 @@ export default {
     }
   },
 
+  data() {
+    return {
+      cards: [],
+    }
+  },
+
   created() {
+    this.getCard();
     
   }
 
@@ -42,7 +51,7 @@ export default {
   
  
   <AppHeader/>
-  <AppMain/>
+  <AppMain :cards="cards"/>
 
 
 </template>

@@ -3,6 +3,6 @@ import { reactive } from 'vue'
 
 export const store = reactive ( {
 
-    searchText: "ciaone",
+    searchText: "",
     loading: true,
 });
